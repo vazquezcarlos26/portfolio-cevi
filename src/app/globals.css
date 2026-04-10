@@ -1,0 +1,170 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "tailwindcss";
+
+:root {
+  --font-display: 'Sora', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: #050507;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+/* Grid noise texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(99, 102, 241, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: 0;
+  
+}
+
+/* Glow effects */
+.glow-indigo {
+  box-shadow: 0 0 60px rgba(99, 102, 241, 0.15), 0 0 120px rgba(99, 102, 241, 0.05);
+}
+
+.glow-text {
+  text-shadow: 0 0 40px rgba(129, 140, 248, 0.4);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0C0C10;
+}
+::-webkit-scrollbar-thumb {
+  background: #32324A;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #4F46E5;
+}
+
+/* Animated gradient border */
+.gradient-border {
+  position: relative;
+  background: linear-gradient(#111116, #111116) padding-box,
+              linear-gradient(135deg, rgba(99,102,241,0.8), rgba(168,85,247,0.4), rgba(99,102,241,0.1)) border-box;
+  border: 1px solid transparent;
+}
+
+.gradient-border-hover {
+  position: relative;
+  background: linear-gradient(#111116, #111116) padding-box,
+              linear-gradient(135deg, rgba(99,102,241,0.2), rgba(168,85,247,0.1)) border-box;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.gradient-border-hover:hover {
+  background: linear-gradient(#111116, #111116) padding-box,
+              linear-gradient(135deg, rgba(99,102,241,0.8), rgba(168,85,247,0.4)) border-box;
+  transform: translateY(-3px);
+  box-shadow: 0 20px 60px rgba(99, 102, 241, 0.15);
+}
+
+/* Fade animations with delay support */
+.animate-delay-100 { animation-delay: 100ms; }
+.animate-delay-200 { animation-delay: 200ms; }
+.animate-delay-300 { animation-delay: 300ms; }
+.animate-delay-400 { animation-delay: 400ms; }
+.animate-delay-500 { animation-delay: 500ms; }
+.animate-delay-600 { animation-delay: 600ms; }
+.animate-delay-700 { animation-delay: 700ms; }
+.animate-delay-800 { animation-delay: 800ms; }
+
+/* .opacity-0-init {
+  opacity: 0;
+} */
+
+/* Noise overlay */
+.noise-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity: 0.3;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* Tag pill */
+.tag-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 500;
+  font-family: var(--font-mono);
+  letter-spacing: 0.05em;
+  background: rgba(99, 102, 241, 0.1);
+  color: #818CF8;
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  transition: all 0.2s ease;
+}
+
+.tag-pill:hover {
+  background: rgba(99, 102, 241, 0.2);
+  border-color: rgba(99, 102, 241, 0.4);
+}
+
+/* Section title line */
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #818CF8;
+}
+
+/* Cursor dot */
+#cursor-dot {
+  width: 8px;
+  height: 8px;
+  background: #6366F1;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.1s ease;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+#cursor-ring {
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(99, 102, 241, 0.5);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  transition: transform 0.15s ease, width 0.2s ease, height 0.2s ease;
+}
